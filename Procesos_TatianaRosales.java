@@ -113,5 +113,34 @@ public class Procesos_TatianaRosales {
         }
     }
 
+    //EJECUTA COMANDO Y ESPERA
+    private static void procesoPrueba3(String command, String arg1, String arg2) {
+        //Prueba procesos
+        /**
+         * PARTE 3.se le pasa por parámetro el comando y los argumentos y el
+         * método crea un proceso que ejecuta dicho comando con sus argumentos.
+         * Espera a que finalice su ejecución durante 5 segundos. En caso de que
+         * no lo haga, destruye el proceso hijo y finaliza su ejecución.
+         */
+
+        ArrayList<String> listaElem = new ArrayList<>();
+        listaElem.add(command);
+        listaElem.add(arg1);
+        listaElem.add(arg2);
+
+        // Crear el process builder
+        ProcessBuilder pb3 = new ProcessBuilder(listaElem);
+        pb3.inheritIO();
+        System.out.println(listaElem);
+
+        try {
+            Process p = pb3.start();
+            p.waitFor(5, TimeUnit.SECONDS);
+            p.destroy();
+        } catch (IOException | InterruptedException e) {
+            System.out.println("Error al realizar el proceso.");
+        }
+    }
+
 
 }
