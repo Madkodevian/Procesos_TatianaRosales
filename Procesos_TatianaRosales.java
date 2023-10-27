@@ -22,7 +22,7 @@ public class Procesos_TatianaRosales {
         //APARTADO3
         //procesoPrueba3("cmd", "/c", "ping google.es");
         //APARTADO4
-        //procesoPrueba4("cmd", "/c", "dir");
+        procesoPrueba4("cmd", "/c", "dir");
         //APARTADO5
         //procesoPrueba5("cmd", "/c", "type fichero.txt");
         //procesoPrueba5("cmd", "/c", "find dias fichero.txt");
