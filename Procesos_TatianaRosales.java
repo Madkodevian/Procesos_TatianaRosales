@@ -172,5 +172,66 @@ public class Procesos_TatianaRosales {
         }
     }
 
+    //BUSCA Y GUARDA
+    private static void procesoPrueba5(String command, String arg1, String arg2) {
+        //Prueba procesos
+        /**
+         * PARTE 5.este método debe ejecutar un proceso que busque mediante el
+         * comando "grep" (o "find" en Windows) el texto pasado por parámetro en
+         * el primer fichero pasado por parámetro (hay que redirigir la entrada
+         * estándar del proceso hijo a ese fichero). La salida que genera el
+         * comando grep/find se debe redirigir al segundo fichero pasado por
+         * parámetro.
+         */
 
+        //processbuilder directory
+        ArrayList<String> listaElem = new ArrayList<>();
+        listaElem.add(command);
+        listaElem.add(arg1);
+        listaElem.add(arg2);
+
+        // Crear el process builder
+        ProcessBuilder pb5 = new ProcessBuilder(listaElem);
+        pb5.inheritIO();
+        //System.out.println(listaElem);
+
+        try {
+            pb5.directory(new File("F:/"));
+            Process p = pb5.start();
+
+            //Crear dos ficheros: uno de entrada y otro de salida
+            try ( InputStream inputStream = new FileInputStream("F:\\fichero.txt")) {
+                byte[] array = new byte[100];
+                // Read byte from the input stream
+                inputStream.read(array);
+                // Convert byte array into string
+                String data = new String(array);
+
+                System.out.println(data);
+                // Close the input stream
+                inputStream.close();
+            }
+            
+            // --------------------------//
+            
+            try ( FileOutputStream fout = new FileOutputStream("F:\\fichero.txt", true)) {
+                String st = "";
+
+                char ch[] = st.toCharArray();
+                System.out.println(ch);
+
+                /**
+                int i;
+                for (i = 0; i < st.length(); i++) {
+                    //fout.write(ch[i]);
+                    //System.out.println();
+                }
+                */
+                fout.close();
+            }
+
+        } catch (IOException e) {
+            System.out.println(e);
+        }
+    }
 }
