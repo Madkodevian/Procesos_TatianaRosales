@@ -142,5 +142,35 @@ public class Procesos_TatianaRosales {
         }
     }
 
+    //EJECUTA COMANDO DIRECTORIO
+    private static void procesoPrueba4(String command, String arg1, String arg2) {
+        //Prueba procesos
+        /**
+         * PARTE 4.se le pasa por parámetro el comando y los argumentos, junto
+         * al directorio de ejecución. El método debe ejecutar dicho comando en
+         * dicho directorio. La salida debe demostrar que se ha realizado la
+         * ejecución en el directorio.
+         */
+
+        //processbuilder directory
+        ArrayList<String> listaElem = new ArrayList<>();
+        listaElem.add(command);
+        listaElem.add(arg1);
+        listaElem.add(arg2);
+
+        // Crear el process builder
+        ProcessBuilder pb4 = new ProcessBuilder(listaElem);
+        pb4.inheritIO();
+        System.out.println(listaElem);
+
+        try {
+            pb4.directory(new File("C:/"));
+            Process p = pb4.start();
+            System.out.println("" + pb4.directory());
+        } catch (IOException e) {
+            System.out.println("Error al realizar el proceso.");
+        }
+    }
+
 
 }
